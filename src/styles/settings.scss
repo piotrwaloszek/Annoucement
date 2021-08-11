@@ -1,7 +1,13 @@
+@import url('<link href="https://fonts.googleapis.com/css?family=Gothic+A1:300,600|Playfair+Display" rel="stylesheet">');
+
 $base-size: 12px;
+$logo-font: 'Playfair Display', serif;
+$text-font: 'Gothic A1', sans-serif;
+$appBar-color: #003D1F;
+$layout-color: #D5F2E3;
+$background-color: #F1F8F5;
+$dark-color: #01110A;
+$text-color: $dark-color;
 
-*, *::before, *::after {
-  box-sizing: border-box;
-}
-
-$button-color: aquamarine;
+$button-color: #73BA9B;
+$button-color-two: #BA2D0B;

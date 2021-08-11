@@ -1,25 +1,48 @@
 @import '../../../styles/settings.scss';
 
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 .root {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  width: 80%;
+  padding: 20px;
+  margin: 20px auto;
+  background-color: $layout-color;
+
   .ad {
     display: flex;
     flex-direction: row;
-    margin: 20px 0;
+    justify-content: space-around;
+    margin: 15px 0;
+    width: 30%;
+    padding: 30px 10px;
+    border: $appBar-color solid 2px;
+    border-radius: 5px;
+    background-color: $background-color;
+    color: $text-color;
 
-    img {
-      width: 10%;
-      height: 10%;
-      margin: 0 20px;
+    .picture {
+      width: 40%;
+      height: 90%;
     }
 
     .link {
-      background-color: $button-color;
-      padding: 10px 20px;
-      margin: 10px;
+      text-decoration: none;
+      color: $text-color;
+      font-family: $text-font;
+      font-weight: 600;
+      font-size: 20px;
     }
 
     .info {
       font-size: 15px;
+      font-family: $text-font;
+      font-weight: 300;
     }
   }
 }

@@ -1,4 +1,29 @@
 @import '../../../styles/settings.scss';
 
-// .root {
-// }
+  .appBar {
+    background-color: $appBar-color;
+    .root {
+    display: flex;
+    align-items: center;
+    color: $background-color;
+
+    .title {
+      font-size: 30px;
+      padding: 0;
+      margin: 10px;
+      font-family: $logo-font;
+      font-weight: 400;
+      text-transform: uppercase;
+      width: 95%;
+    }
+
+    .home {
+      font-size: 30px;
+      color: $background-color;
+    }
+
+    .profile {
+      font-size: 30px;
+    }
+  }
+}

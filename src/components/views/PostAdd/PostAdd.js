@@ -2,15 +2,11 @@ import React from 'react';
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
-
 import clsx from 'clsx';
 import { v4 as uuidv4 } from 'uuid';
-
 import { connect } from 'react-redux';
 import { getAll, addPost } from '../../../redux/postsRedux';
-
 import styles from './PostAdd.module.scss';
-
 const Component = ({className, addPost}) => {
   const [post, setPost] = useState(
     {
@@ -27,12 +23,10 @@ const Component = ({className, addPost}) => {
       status: ''
     }
   );
-
   const handleChange = (event) => {
     setPost({ ...post, [event.target.name]: event.target.value })
     //console.log(post);
   }
-
   const submitForm = (event) => {
     event.preventDefault();
     if(post.title.length > 1 && post.content.length > 1 && post.email){
@@ -40,7 +34,6 @@ const Component = ({className, addPost}) => {
       post.publicationDate = new Date().toISOString();
       addPost(post);
       console.log('wysłane', post)
-
       setPost({
         id: '',
         title: '',
@@ -61,51 +54,45 @@ const Component = ({className, addPost}) => {
 
   return (
     <div className={clsx(className, styles.root)}>
-      <h2>Add new post</h2>
+      <h2 className={styles.title}>Add new post</h2>
       <form className={styles.adForm} action="/contact/send-message" method="POST" enctype="multipart/form-data" onSubmit={submitForm}>
         <label className={styles.formInput}>
-          Title: <input type="text" name="title" onChange={handleChange}></input>
+          Title<input type="text" name="title" onChange={handleChange}></input>
         </label>
         <label className={styles.formInput}>
-          Price: <input type="text" name="price" onChange={handleChange}></input>
+          Price<input type="text" name="price" onChange={handleChange}></input>
         </label>
         <label className={styles.formInput}>
-          Description: <textarea type="text" name="content" onChange={handleChange}></textarea>
+          Description<textarea type="text" name="content" onChange={handleChange}></textarea>
         </label>
         <label className={styles.formInput}>
-          Email: <input type="email" name="email" onChange={handleChange}></input>
+          Email<input type="email" name="email" onChange={handleChange}></input>
         </label>
         <label className={styles.formInput}>
-          Phone number: <input type="text" name="phone" onChange={handleChange}></input>
+          Phone number<input type="text" name="phone" onChange={handleChange}></input>
         </label>
         <label className={styles.formInput}>
-          Location: <input type="text" name="location" onChange={handleChange}></input>
+          Location<input type="text" name="location" onChange={handleChange}></input>
         </label>
         <label className={styles.formInput}>
-          Image: <input type="file" name="image" accept=".png, .jpg, .jpeg, .gif" onChange={handleChange}></input>
+          Image<input className={styles.file} type="file" name="image" accept=".png, .jpg, .jpeg, .gif" onChange={handleChange}></input>
         </label>
-        <button type="submit">Send message</button>
+        <button className={styles.button} type="submit">Send message</button>
       </form>
-      <Link className ={styles.button} to='/'>Back to homepage</Link>
     </div>
   );
 }
-
 Component.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
 };
-
 const mapStateToProps = state => ({
   allPosts: getAll(state),
 });
-
 const mapDispatchToProps = dispatch => ({
   addPost: (post) => dispatch(addPost(post)),
 });
-
 const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
-
 export {
   //Component as PostAdd,
   Container as PostAdd,
