@@ -1,4 +1,25 @@
 @import '../../../styles/settings.scss';
 
-// .root {
-// }
+.root {
+  .ad {
+    display: flex;
+    flex-direction: row;
+    margin: 20px 0;
+
+    img {
+      width: 10%;
+      height: 10%;
+      margin: 0 20px;
+    }
+
+    .link {
+      background-color: $button-color;
+      padding: 10px 20px;
+      margin: 10px;
+    }
+
+    .info {
+      font-size: 15px;
+    }
+  }
+}

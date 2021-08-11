@@ -1,1 +1,7 @@
 $base-size: 12px;
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+$button-color: aquamarine;
