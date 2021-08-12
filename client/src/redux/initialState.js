@@ -84,5 +84,6 @@ export const initialState = {
       active: false,
       error: false,
     },
+    logged: false,
   },
 };

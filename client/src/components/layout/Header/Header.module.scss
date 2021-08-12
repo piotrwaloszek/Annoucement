@@ -1,5 +1,21 @@
 @import '../../../styles/settings.scss';
 
+.logged {
+  display: flex;
+  flex-direction: row;
+
+  .logButton {
+    font-size: 15px;
+    background-color: $appBar-color;
+    color: $background-color;
+    cursor: pointer;
+    margin: 10px;
+    padding: 5px 15px;
+    border-radius: 5%;
+    text-decoration: none;
+  }
+}
+
   .appBar {
     background-color: $appBar-color;
     width: 90%;
@@ -9,7 +25,6 @@
     align-items: center;
     justify-content: start;
     color: $background-color;
-
     .title {
       font-size: 30px;
       padding: 0;
@@ -20,22 +35,18 @@
       width: 95%;
       margin-left: 3%;
     }
-
     .home {
       font-size: 30px;
       color: $background-color;
     }
-
     .logged {
       display: flex;
       width: 10%;
       align-items: center;
-
       .profile {
       font-size: 30px;
       margin-right: 20px;
       }
-
     .button {
       font-size: 15px;
       color: $background-color;
