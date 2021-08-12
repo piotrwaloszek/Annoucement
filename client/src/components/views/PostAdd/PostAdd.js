@@ -1,7 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
 import PropTypes from 'prop-types';
-import {Link} from 'react-router-dom';
 import clsx from 'clsx';
 import { v4 as uuidv4 } from 'uuid';
 import { connect } from 'react-redux';
@@ -25,7 +24,6 @@ const Component = ({className, addPost}) => {
   );
   const handleChange = (event) => {
     setPost({ ...post, [event.target.name]: event.target.value })
-    //console.log(post);
   }
   const submitForm = (event) => {
     event.preventDefault();
@@ -94,7 +92,6 @@ const mapDispatchToProps = dispatch => ({
 });
 const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
 export {
-  //Component as PostAdd,
   Container as PostAdd,
   Component as PostAddComponent,
 };

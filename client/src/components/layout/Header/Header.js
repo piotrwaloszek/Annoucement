@@ -1,13 +1,8 @@
 import React from 'react';
-import {useState} from 'react';
 import {Link} from 'react-router-dom';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import HomeIcon from '@material-ui/icons/Home';
-import AccountCircle from '@material-ui/icons/AccountCircle';
-import Switch from '@material-ui/core/Switch';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormGroup from '@material-ui/core/FormGroup';
 import clsx from 'clsx';
 import styles from './Header.module.scss';
 
@@ -15,11 +10,6 @@ import { connect } from 'react-redux';
 import { isLogged, logIn, logOut } from '../../../redux/postsRedux';
 
 const Component = ({className, logged, logIn, logOut}) => {
-  // const [auth, setAuth] = useState(true);
-
-  // const handleChange = (event) => {
-  //   setAuth(event.target.checked);
-  // };
 
   return (
     <div>
@@ -47,11 +37,6 @@ const Component = ({className, logged, logIn, logOut}) => {
   );
 }
 
-// Component.propTypes = {
-//   children: PropTypes.node,
-//   className: PropTypes.string,
-// };
-
 const mapStateToProps = state => ({
   logged: isLogged(state),
 });
@@ -64,7 +49,6 @@ const mapDispatchToProps = dispatch => ({
 const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
 
 export {
-  //Component as Header,
   Container as Header,
   Component as HeaderComponent,
 };

@@ -26,12 +26,8 @@ Component.propTypes = {
 const mapStateToProps = state => ({
   allPosts: getAll(state),
 });
-// const mapDispatchToProps = dispatch => ({
-//   someAction: arg => dispatch(reduxActionCreator(arg)),
-// });
 const Container = connect(mapStateToProps)(Component);
 export {
-  //Component as Homepage,
   Container as Homepage,
   Component as HomepageComponent,
 };

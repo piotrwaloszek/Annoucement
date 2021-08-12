@@ -1,7 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
 import PropTypes from 'prop-types';
-import {Link} from 'react-router-dom';
 import clsx from 'clsx';
 import { connect } from 'react-redux';
 import { getOne, editPost } from '../../../redux/postsRedux';
@@ -78,7 +77,6 @@ const mapDispatchToProps = dispatch => ({
 });
 const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
 export {
-  //Component as PostEdit,
   Container as PostEdit,
   Component as PostEditComponent,
 };
