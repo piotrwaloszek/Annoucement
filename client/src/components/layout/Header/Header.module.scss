@@ -2,9 +2,12 @@
 
   .appBar {
     background-color: $appBar-color;
+    width: 90%;
+    margin: auto;
     .root {
     display: flex;
     align-items: center;
+    justify-content: start;
     color: $background-color;
 
     .title {
@@ -15,6 +18,7 @@
       font-weight: 400;
       text-transform: uppercase;
       width: 95%;
+      margin-left: 3%;
     }
 
     .home {
@@ -22,8 +26,21 @@
       color: $background-color;
     }
 
-    .profile {
+    .logged {
+      display: flex;
+      width: 10%;
+      align-items: center;
+
+      .profile {
       font-size: 30px;
+      margin-right: 20px;
+      }
+
+    .button {
+      font-size: 15px;
+      color: $background-color;
+      text-decoration: none;
+      }
     }
   }
 }
