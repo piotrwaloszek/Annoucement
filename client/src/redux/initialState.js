@@ -1,7 +1,7 @@
 export const initialState = {
   posts: {
     data: [],
-    singlePost: null,
+    singlePost: {},
     loading: {
       active: false,
       error: false,

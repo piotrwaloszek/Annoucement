@@ -4,12 +4,13 @@ import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { v4 as uuidv4 } from 'uuid';
 import { connect } from 'react-redux';
-import { getAll, addPost } from '../../../redux/postsRedux';
+import { getAll, addPost, addPostRequest } from '../../../redux/postsRedux';
 import styles from './PostAdd.module.scss';
-const Component = ({className, addPost}) => {
+const Component = ({className, addPost, addPostRequest}) => {
+
   const [post, setPost] = useState(
     {
-      id: '',
+      //_id: '',
       title: '',
       price: '',
       content: '',
@@ -19,22 +20,25 @@ const Component = ({className, addPost}) => {
       image: '',
       phone: '',
       location: '',
-      status: ''
+      status: 'published'
     }
   );
+
   const handleChange = (event) => {
     setPost({ ...post, [event.target.name]: event.target.value })
   }
   const submitForm = (event) => {
     event.preventDefault();
     if(post.title.length > 1 && post.content.length > 1 && post.email){
-      post.id = uuidv4();
+      //post.id = uuidv4();
       post.publicationDate = new Date().toISOString();
       addPost(post);
+      addPostRequest(post);
+      console.log(post);
       alert('Your post is added!');
 
       setPost({
-        id: '',
+        //id: '',
         title: '',
         price: '',
         content: '',
@@ -88,6 +92,7 @@ const mapStateToProps = state => ({
   allPosts: getAll(state),
 });
 const mapDispatchToProps = dispatch => ({
+  addPostRequest: (post) => dispatch(addPostRequest(post)),
   addPost: (post) => dispatch(addPost(post)),
 });
 const Container = connect(mapStateToProps, mapDispatchToProps)(Component);

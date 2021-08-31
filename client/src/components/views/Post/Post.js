@@ -3,19 +3,14 @@ import { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 import clsx from 'clsx';
-
 import { connect } from 'react-redux';
 import { getOne, fetchOnePost } from '../../../redux/postsRedux';
 import { isLogged } from '../../../redux/loggedRedux';
-
 import styles from './Post.module.scss';
-
 const Component = ({className, onePost, logged, fetchOnePost}) => {
-
   useEffect(() => {
     fetchOnePost();
   }, []);
-
   return (
     <div>
       <div className={clsx(className, styles.root)} key={onePost.id}>
@@ -45,7 +40,7 @@ Component.propTypes = {
 };
 
 const mapStateToProps = (state, props) => ({
-  onePost: getOne(props.match.params.id),
+  onePost: getOne(state),
   logged: isLogged(state),
 });
 

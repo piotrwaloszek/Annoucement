@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const postSchema = new mongoose.Schema({
   title: { type: String, required: true },
-  price: { type: Number },
+  price: { type: String },
   content: { type: String, required: true },
   publicationDate: { type: Date, required: true },
   lastUpdateDate: { type: Date, required: true },
@@ -10,7 +10,7 @@ const postSchema = new mongoose.Schema({
   image: { type: String },
   phone: { type: String },
   location: { type: String },
-  status: { type: String, required: true },
+  status: { type: String},
 });
 
 module.exports = mongoose.model('Post', postSchema);
