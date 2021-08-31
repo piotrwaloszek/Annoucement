@@ -27,7 +27,7 @@ app.use('*', (req, res) => {
 });
 
 /* MONGOOSE */
-mongoose.connect('mongodb://localhost:27017/BulletinBoard', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb+srv://petermus:or#DPooL@yneLRcYq4TLo5h&RQxA@cluster0.zfp11.mongodb.net/BulletinBoard?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection;
 db.once('open', () => {
   console.log('Successfully connected to the database');

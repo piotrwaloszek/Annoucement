@@ -7,7 +7,7 @@ import clsx from 'clsx';
 import styles from './Header.module.scss';
 
 import { connect } from 'react-redux';
-import { isLogged, logIn, logOut } from '../../../redux/postsRedux';
+import { isLogged, logIn, logOut } from '../../../redux/loggedRedux';
 
 const Component = ({className, logged, logIn, logOut}) => {
 
@@ -23,7 +23,7 @@ const Component = ({className, logged, logIn, logOut}) => {
             <HomeIcon className={clsx(className, styles.home)}/>
           </Link>
           <h6 className={clsx(className, styles.title)}>Bulletin Board</h6>
-          {logged.posts.logged ? (
+          {logged ? (
             <div className={styles.logged}>
               <Link className ={styles.button} to={'/post/add'}>Add Post</Link>
             </div>
@@ -36,18 +36,18 @@ const Component = ({className, logged, logIn, logOut}) => {
     </div>
   );
 }
-
+// Component.propTypes = {
+//   children: PropTypes.node,
+//   className: PropTypes.string,
+// };
 const mapStateToProps = state => ({
   logged: isLogged(state),
 });
-
 const mapDispatchToProps = dispatch => ({
   logIn: (logged) => dispatch(logIn(logged)),
   logOut: (logged) => dispatch(logOut(logged)),
 });
-
 const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
-
 export {
   Container as Header,
   Component as HeaderComponent,
