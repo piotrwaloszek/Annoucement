@@ -1,9 +1,10 @@
 import { initialState } from "./initialState";
+import Axios from 'axios';
+
 /* selectors */
 export const getAll = ({posts}) => posts.data;
 export const getOne = ({posts}, id) => posts.data.filter(item => item.id == id);
 export const isLogged = logged => logged;
-
 /* action name creator */
 const reducerName = 'posts';
 const createActionName = name => `app/${reducerName}/${name}`;
@@ -15,7 +16,6 @@ const ADD_POST = createActionName('ADD_POST');
 const EDIT_POST = createActionName('EDIT_POST');
 const LOG_IN = createActionName('LOG_IN');
 const LOG_OUT = createActionName('LOG_OUT');
-
 /* action creators */
 export const fetchStarted = payload => ({ payload, type: FETCH_START });
 export const fetchSuccess = payload => ({ payload, type: FETCH_SUCCESS });
@@ -26,6 +26,22 @@ export const logIn = payload => ({payload, type: LOG_IN});
 export const logOut = payload => ({payload, type: LOG_OUT});
 
 /* thunk creators */
+export const fetchPublished = () => {
+  return (dispatch, getState, posts) => {
+    dispatch(fetchStarted());
+
+    Axios
+      .get('http://localhost:8000/api/posts')
+      .then(res => {
+        //if(!posts.data && posts.loading.active === false){
+          dispatch(fetchSuccess(res.data));
+        //}
+      })
+      .catch(err => {
+        dispatch(fetchError(err.message || true));
+      });
+  };
+};
 
 /* reducer */
 export const reducer = (statePart = initialState, action = {}) => {

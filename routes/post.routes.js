@@ -1,25 +1,32 @@
 const express = require('express');
 const router = express.Router();
-const db = require('./../db');
 
-router.get('/posts', (req, res) => {
-  res.json(db.posts);
+const Post = require('../models/post.model');
+
+router.get('/posts', async (req, res) => {
+  try {
+    const result = await Post
+      .find({status: 'published'})
+      .select('location title image price')
+      .sort({created: -1});
+    if(!result) res.status(404).json({ post: 'Not found' });
+    else res.json(result);
+  }
+  catch(err) {
+    res.status(500).json(err);
+  }
 });
 
-router.get('/posts/:id', (req, res) => {
-  res.json(db.posts.find(item => item.id == req.params.id));
-});
-
-router.post('/posts', (req, res) => {
-  const { title } = req.body;
-  db.posts.push({ id: 3, title })
-  res.json({ message: 'OK' });
-});
-
-router.put('/posts/:id', (req, res) => {
-  const { title } = req.body;
-  db = db.posts.map(item => (item.id == req.params.id) ? { ...item, title } : item );
-  res.json({ message: 'OK' });
+router.get('/posts/:id', async (req, res) => {
+  try {
+    const result = await Post
+      .findById(req.params.id);
+    if(!result) res.status(404).json({ post: 'Not found' });
+    else res.json(result);
+  }
+  catch(err) {
+    res.status(500).json(err);
+  }
 });
 
 module.exports = router;
